@@ -87,12 +87,13 @@ if (test) {
     var lid_6 = app.project.item(4).layer("Solid 7").transform;
     var lid_7 = app.project.item(4).layer("Solid 8").transform;
     
+    //right top lid
     var lid_8 = app.project.item(4).layer("Solid 9").transform;
     var lid_9 = app.project.item(4).layer("Solid 10").transform;
     var lid_10 = app.project.item(4).layer("Solid 11").transform;
     var lid_11 = app.project.item(4).layer("Solid 12").transform;
     
-    //left bottom lid
+    //right bottom lid
     var lid_12 = app.project.item(4).layer("Solid 13").transform;
     var lid_13 = app.project.item(4).layer("Solid 14").transform;
     var lid_14 = app.project.item(4).layer("Solid 15").transform;
@@ -100,21 +101,33 @@ if (test) {
     };
 else {
     //left top lid
-    var lid_0 = app.project.item(4).layer("Solid 2").transform;
-    var lid_1 = app.project.item(4).layer("Solid 3").transform;
-    var lid_2 = app.project.item(4).layer("Solid 4").transform;
-    var lid_3 = app.project.item(4).layer("Solid 5").transform;
+    var lid_0 = app.project.item(91).layer("L_Tlid_forslash").transform;
+    var lid_1 = app.project.item(91).layer("L_Tlid_backslash").transform;
+    var lid_2 = app.project.item(91).layer("L_Tlid_Flat").transform;
+    var lid_3 = undefined;
     
-     //left bottom lid
-    var lid_4 = app.project.item(4).layer("Solid 2").transform;
-    var lid_5 = app.project.item(4).layer("Solid 3").transform;
-    var lid_6 = app.project.item(4).layer("Solid 4").transform;
-    var lid_7 = app.project.item(4).layer("Solid 5").transform;
+    //left bottom lid
+    var lid_4 = app.project.item(91).layer("L_Blid_forslash").transform;
+    var lid_5 = app.project.item(91).layer("L_Blid_backslash").transform;
+    var lid_6;
+    var lid_7;
+    
+    //right top lid
+    var lid_8;
+    var lid_9 ;
+    var lid_10 ;
+    var lid_11 ;
+    
+    //right bottom lid
+    var lid_12 ;
+    var lid_13 ;
+    var lid_14 ;
+    var lid_15 ;
     };
 
 
-var l_t_lid_arr = [lid_0, lid_1, lid_2, lid_3];
-var l_b_lid_arr = [lid_4, lid_5, lid_6, lid_7];
+var l_t_lid_arr = [lid_0, lid_1, lid_2];
+var l_b_lid_arr = [lid_4, lid_5];
 var r_t_lid_arr = [lid_8, lid_9, lid_10, lid_11];
 var r_b_lid_arr = [lid_12, lid_13, lid_14, lid_15];
 

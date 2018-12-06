@@ -1,15 +1,19 @@
-﻿//Slider Control Testing
+﻿//@target aftereffects
+//Slider Control Testing
 
 
-
-function testing_slider() 
-{
-	this.windowRef = null;
+if(typeof(lid_slider_unitTest) == "undefined") {
+    lid_slider();
 }
 
-//Global Variables: Objects in the AE file.
 
-var test = true;
+
+function lid_slider(w, test) {
+
+if (test == undefined) {
+    test = true;
+    }
+//Global Variables: Objects in the AE file.
 
 if (test) {
     var t_lid_obj = app.project.item(4).layer("Solid 2").transform;
@@ -24,10 +28,9 @@ else {
     var Rl_lid_obj = app.project.item(4).layer("Solid 1").transform;
     };
 
-
-testing_slider.prototype.run = function()
-{
-var w = new Window ('palette', "Eye Lid Sliders", undefined);
+if (w == undefined) {
+    var w = new Window ('palette', "Eye Lid Sliders", undefined);
+};
 //w.orientation = 'row';
 
 w.add('checkbox', undefined, 'Together', {name: 'both_sw'});
@@ -100,11 +103,18 @@ buttons.add('button', undefined, "Cancel", {name: 'cancel'});
 
 
 // origin position of objects taken before function call.
-var old_position = t_lid_obj.position.valueAtTime(app.project.activeItem.time, false);
-var old_position2 = l_lid_obj.position.valueAtTime(app.project.activeItem.time, false);
-var old_position3 = Rt_lid_obj.position.valueAtTime(app.project.activeItem.time, false);
-var old_position4 = Rl_lid_obj.position.valueAtTime(app.project.activeItem.time, false);
-    
+if (test) {
+    var old_position = t_lid_obj.position.valueAtTime(app.project.activeItem.time, false);
+    var old_position2 = l_lid_obj.position.valueAtTime(app.project.activeItem.time, false);
+    var old_position3 = Rt_lid_obj.position.valueAtTime(app.project.activeItem.time, false);
+    var old_position4 = Rl_lid_obj.position.valueAtTime(app.project.activeItem.time, false);
+    };
+else {
+    var old_position = [0,0,0];
+    var old_position2 = [0,0,0];
+    var old_position3 = [0,0,0];
+    var old_position4 = [0,0,0];
+    }
  
  //functions
  
@@ -112,17 +122,29 @@ var old_position4 = Rl_lid_obj.position.valueAtTime(app.project.activeItem.time,
  w.both_sw.onClick = function () {
      //disable the Right Side boxes
      //have if statements inside the L side sliders to handle it. 
+     if (this.value == true) {
+        Rslider_group.enabled = false;
+        };
+    else {
+        Rslider_group.enabled = true;
+        };
+};
      
-     };
  
 
 //Visibility Checkboxes
 top_lid_group.box_group.vis_b.onClick = function() {
     opacity_bx (t_lid_obj, this);
+    if (w.both_sw.value){
+        opacity_bx (Rt_lid_obj, this);
+        }
     };
 
 bot_lid_group.box_group.vis_b.onClick = function() {
      opacity_bx (l_lid_obj, this);
+     if (w.both_sw.value){
+        opacity_bx (Rl_lid_obj, this);
+        }
 
     };
 
@@ -140,11 +162,17 @@ Rbot_lid_group.box_group.vis_b.onClick = function() {
  //Sliders
 top_slider.onChange = function() {
     lid_move (t_lid_obj, old_position, top_lid_group);
+    if (w.both_sw.value){
+        lid_move (Rt_lid_obj, old_position3, top_lid_group);
+        }
     };
     
     
  bot_slider.onChange = function() {
     lid_move (l_lid_obj, old_position2, bot_lid_group);
+    if (w.both_sw.value){
+        lid_move (Rl_lid_obj, old_position4, bot_lid_group);
+        }
     };
 
 Rtop_slider.onChange = function() {
@@ -164,18 +192,23 @@ top_lid_group.box_group.lid_v.onChange = function() {
      //$.writeln(this.text);
 
     t_lid_obj.position.setValueAtTime(app.project.activeItem.time, [old_position[0], (old_position[1] + top_slider.value)]); 
+     if (w.both_sw.value){
+        Rt_lid_obj.position.setValueAtTime(app.project.activeItem.time, [old_position3[0], (old_position3[1] + top_slider.value)]);     
+        }
+
     };
 
 bot_lid_group.box_group.lid_v.onChange = function() {
     bot_slider.value = this.text;
      //$.writeln(this.text);
    l_lid_obj.position.setValueAtTime(app.project.activeItem.time, [old_position2[0], (old_position2[1] + bot_slider.value)]); 
+    if (w.both_sw.value){
+        Rl_lid_obj.position.setValueAtTime(app.project.activeItem.time, [old_position4[0], (old_position4[1] + bot_slider.value)]);
+        }
     };
 
 Rtop_lid_group.box_group.lid_v.onChange = function() {
     Rtop_slider.value = this.text;
-     //$.writeln(this.text);
-
     Rt_lid_obj.position.setValueAtTime(app.project.activeItem.time, [old_position3[0], (old_position3[1] + Rtop_slider.value)]); 
     };
 
@@ -189,13 +222,19 @@ Rbot_lid_group.box_group.lid_v.onChange = function() {
 //Reset Buttons
 top_lid_group.Reset.onClick = function() {
     top_slider.value = 0;
-    lid_move (t_lid_obj, old_position, top_lid_group);    
+    lid_move (t_lid_obj, old_position, top_lid_group);  
+    if (w.both_sw.value){
+        lid_move (Rt_lid_obj, old_position3, top_lid_group);    
+        }
+
     };
 
 bot_lid_group.Reset.onClick = function() {
     bot_slider.value = 0;
      lid_move (l_lid_obj, old_position2, bot_lid_group);
-
+    if (w.both_sw.value){
+        lid_move (Rl_lid_obj, old_position4, bot_lid_group);    
+        }
     
     };
 
@@ -239,6 +278,8 @@ function opacity_bx(obj, ch_bx) {
 //lid moving function
 function lid_move(lid_obj, pos, lid_grp) {
      var slider = lid_grp.children[1];  
+//~      $.writeln(pos);
+//~      $.writeln(slider.value);
     lid_obj.position.setValueAtTime(app.project.activeItem.time, [pos[0], pos[1] + slider.value, pos[2]])
     lid_grp.box_group.lid_v.text = slider.value.toFixed(0);
     };
@@ -248,10 +289,8 @@ w.show ();
     
     
     return true;
-}
 
 
+};
 
-if(typeof(testing_slider_unitTest) == "undefined") {
-    new testing_slider().run();
-}
+

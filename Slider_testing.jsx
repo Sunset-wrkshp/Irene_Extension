@@ -1,9 +1,9 @@
 ﻿//@target aftereffects
 //Slider Control Testing
 
-
-if(typeof(lid_slider_unitTest) == "undefined") {
-    lid_slider();
+lib = true;
+if(!lib) {
+    lid_slider(undefined, false);
 }
 
 
@@ -284,8 +284,9 @@ function lid_move(lid_obj, pos, lid_grp) {
     lid_grp.box_group.lid_v.text = slider.value.toFixed(0);
     };
 
-w.show ();
-		
+if (!lib){
+    w.show ();
+};
     
     
     return true;

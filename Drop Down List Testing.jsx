@@ -68,12 +68,11 @@ function LidWindow(w,test)
  if (w == undefined) {
      var w = new Window ('palette', "Drop Down List Test", undefined);
      };
-//var w = new Window ('palette', "Drop Down List Test", undefined);
 if (test == undefined) {
     test = true;
     };
 
-// stuff
+//Items in After Effects
 if (test) {
     //left top lid
     var lid_0 = app.project.item(4).layer("Solid 2").transform;
@@ -126,6 +125,8 @@ else {
     };
 
 
+
+//add more elements to the arrays as more lids are available
 var l_t_lid_arr = [lid_0, lid_1, lid_2];
 var l_b_lid_arr = [lid_4, lid_5];
 var r_t_lid_arr = [lid_8, lid_9, lid_10];
@@ -142,21 +143,23 @@ lid_panel.add('checkbox', undefined, "Together", {name: "both_sw"});
 var lid_group = lid_panel.add("group", undefined);
 lid_group.orientation = "row";
 
+//Left Eye
 var l_lid = lid_group.add('panel', undefined, "Left Eye");
 var l_t_lid = l_lid.add('dropdownlist', undefined, ["None",'item 1', 'item 2', 'item 3']);
 var l_b_lid = l_lid.add('dropdownlist', undefined, ["None",'item 1', 'item 2']);
 
+//Labels
 lid_group.add('group', undefined, {name:"lid_labels"});
 lid_group.lid_labels.orientation = "column";
 lid_group.lid_labels.add('statictext', undefined, "Top Lid");
 lid_group.lid_labels.add('statictext', undefined, "Bottom Lid");
 
+//Right Eye
 var r_lid = lid_group.add('panel', undefined, "Right Eye");
 var r_t_lid = r_lid.add('dropdownlist', undefined, ["None",'item 1', 'item 2', 'item 3', "item 4"]);
 var r_b_lid = r_lid.add('dropdownlist', undefined, ["None",'item 1', 'item 2', 'item 3', "item 4"]);
 
 //together checkbox
-//should this set the other lid to the current value of the left lid?
 lid_panel.both_sw.onClick = function() {
      if (this.value == true) {
         r_lid.enabled = false;
@@ -193,6 +196,13 @@ r_b_lid.onChange = function() {
     lid_change(r_b_lid_arr, this.selection.index)
     };
 
+/*
+    Function lid_change(arr, ind)
+    arr: array of lid elements
+    ind: index of drop down list choice
+    Keys opacity to zero of all elements in arr except for the element indicated by ind.
+    If the drop down list choice is 0 (None) all elements are keyed to zero.
+*/
 function lid_change(arr, ind) {
     // for loop through array, turn each object opacity to zero
     //turn the desired opacity to one
@@ -210,6 +220,7 @@ function lid_change(arr, ind) {
         };    
     };
 
+//Buttons that probably should be removed when used as a library.
 var buttons = w.add('group');
 buttons.add ('button', undefined, "OK", {name: 'ok'});
 w.show ();
@@ -226,7 +237,7 @@ w.show ();
     
 }
 
-
+// Not really sure what this does but comment out if files is being used as a library.
 if(typeof(LidWindow_unitTest) == "undefined") {
     LidWindow(undefined,false);
 }

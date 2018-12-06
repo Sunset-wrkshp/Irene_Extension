@@ -145,8 +145,8 @@ lid_group.orientation = "row";
 
 //Left Eye
 var l_lid = lid_group.add('panel', undefined, "Left Eye");
-var l_t_lid = l_lid.add('dropdownlist', undefined, ["None",'item 1', 'item 2', 'item 3']);
-var l_b_lid = l_lid.add('dropdownlist', undefined, ["None",'item 1', 'item 2']);
+var l_t_lid = l_lid.add('dropdownlist', undefined, ["None",'\\', '\/', 'flat']);
+var l_b_lid = l_lid.add('dropdownlist', undefined, ["None",'\\', '\/']);
 
 //Labels
 lid_group.add('group', undefined, {name:"lid_labels"});
@@ -156,8 +156,8 @@ lid_group.lid_labels.add('statictext', undefined, "Bottom Lid");
 
 //Right Eye
 var r_lid = lid_group.add('panel', undefined, "Right Eye");
-var r_t_lid = r_lid.add('dropdownlist', undefined, ["None",'item 1', 'item 2', 'item 3', "item 4"]);
-var r_b_lid = r_lid.add('dropdownlist', undefined, ["None",'item 1', 'item 2', 'item 3', "item 4"]);
+var r_t_lid = r_lid.add('dropdownlist', undefined, ["None",'\\', '\/', 'flat']);
+var r_b_lid = r_lid.add('dropdownlist', undefined, ["None",'\\', '\/']);
 
 //together checkbox
 lid_panel.both_sw.onClick = function() {
@@ -223,7 +223,7 @@ function lid_change(arr, ind) {
 //Buttons that probably should be removed when used as a library.
 var buttons = w.add('group');
 buttons.add ('button', undefined, "OK", {name: 'ok'});
-w.show ();
+//~ w.show ();
 		
      buttons.children['ok'].onClick = function()
     {
@@ -237,9 +237,9 @@ w.show ();
     
 }
 
-// Not really sure what this does but comment out if files is being used as a library.
-if(typeof(LidWindow_unitTest) == "undefined") {
-    LidWindow(undefined,false);
-}
+//~ // Not really sure what this does but comment out if files is being used as a library.
+//~ if(typeof(LidWindow_unitTest) == "undefined") {
+//~     LidWindow(undefined,false);
+//~ }
 
 

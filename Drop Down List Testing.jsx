@@ -113,14 +113,14 @@ else {
     var lid_7;
     
     //right top lid
-    var lid_8;
-    var lid_9 ;
-    var lid_10 ;
+    var lid_8 = app.project.item(93).layer("R_Tlid_forslash").transform;
+    var lid_9 = app.project.item(93).layer("R_Tlid_backslash").transform;
+    var lid_10 = app.project.item(93).layer("R_Tlid_Flat").transform;
     var lid_11 ;
     
     //right bottom lid
-    var lid_12 ;
-    var lid_13 ;
+    var lid_12 = app.project.item(93).layer("R_Blid_forslash").transform;
+    var lid_13 = app.project.item(93).layer("R_Blid_backslash").transform;
     var lid_14 ;
     var lid_15 ;
     };
@@ -128,8 +128,8 @@ else {
 
 var l_t_lid_arr = [lid_0, lid_1, lid_2];
 var l_b_lid_arr = [lid_4, lid_5];
-var r_t_lid_arr = [lid_8, lid_9, lid_10, lid_11];
-var r_b_lid_arr = [lid_12, lid_13, lid_14, lid_15];
+var r_t_lid_arr = [lid_8, lid_9, lid_10];
+var r_b_lid_arr = [lid_12, lid_13];
 
 
 
@@ -143,8 +143,8 @@ var lid_group = lid_panel.add("group", undefined);
 lid_group.orientation = "row";
 
 var l_lid = lid_group.add('panel', undefined, "Left Eye");
-var l_t_lid = l_lid.add('dropdownlist', undefined, ['item 1', 'item 2', 'item 3', "item 4"]);
-var l_b_lid = l_lid.add('dropdownlist', undefined, ['item 1', 'item 2', 'item 3', "item 4"]);
+var l_t_lid = l_lid.add('dropdownlist', undefined, ["None",'item 1', 'item 2', 'item 3']);
+var l_b_lid = l_lid.add('dropdownlist', undefined, ["None",'item 1', 'item 2']);
 
 lid_group.add('group', undefined, {name:"lid_labels"});
 lid_group.lid_labels.orientation = "column";
@@ -152,8 +152,8 @@ lid_group.lid_labels.add('statictext', undefined, "Top Lid");
 lid_group.lid_labels.add('statictext', undefined, "Bottom Lid");
 
 var r_lid = lid_group.add('panel', undefined, "Right Eye");
-var r_t_lid = r_lid.add('dropdownlist', undefined, ['item 1', 'item 2', 'item 3', "item 4"]);
-var r_b_lid = r_lid.add('dropdownlist', undefined, ['item 1', 'item 2', 'item 3', "item 4"]);
+var r_t_lid = r_lid.add('dropdownlist', undefined, ["None",'item 1', 'item 2', 'item 3', "item 4"]);
+var r_b_lid = r_lid.add('dropdownlist', undefined, ["None",'item 1', 'item 2', 'item 3', "item 4"]);
 
 //together checkbox
 //should this set the other lid to the current value of the left lid?
@@ -197,22 +197,22 @@ function lid_change(arr, ind) {
     // for loop through array, turn each object opacity to zero
     //turn the desired opacity to one
     $.writeln("Function Called " + ind);
-    for (i = 0; i < arr.length; i++) {
+    for (i = 1; i <= arr.length; i++) {
              if (i != ind) {
-                arr[i].opacity.setValueAtTime(app.project.activeItem.time, 0);
+                arr[i-1].opacity.setValueAtTime(app.project.activeItem.time, 0);
             };
-            else {
-                    arr[i].opacity.setValueAtTime(app.project.activeItem.time, 100);
+            else if (ind != 0) {
+                    arr[i-1].opacity.setValueAtTime(app.project.activeItem.time, 100);
 
                 };
-            var key = arr[i].opacity.nearestKeyIndex(app.project.activeItem.time);
-            arr[i].opacity.setInterpolationTypeAtKey(key, KeyframeInterpolationType.HOLD, KeyframeInterpolationType.HOLD);
+            var key = arr[i-1].opacity.nearestKeyIndex(app.project.activeItem.time);
+            arr[i-1].opacity.setInterpolationTypeAtKey(key, KeyframeInterpolationType.HOLD, KeyframeInterpolationType.HOLD);
         };    
     };
 
 var buttons = w.add('group');
 buttons.add ('button', undefined, "OK", {name: 'ok'});
-//~ w.show ();
+w.show ();
 		
      buttons.children['ok'].onClick = function()
     {
@@ -227,8 +227,8 @@ buttons.add ('button', undefined, "OK", {name: 'ok'});
 }
 
 
-//~ if(typeof(LidWindow_unitTest) == "undefined") {
-//~     LidWindow(undefined,true);
-//~ }
+if(typeof(LidWindow_unitTest) == "undefined") {
+    LidWindow(undefined,false);
+}
 
 

@@ -1,12 +1,12 @@
 ﻿//@target aftereffects
 //Eye choice
 
-lib = false;
+lib = true;
 if (!lib){ eye_choice();};
 
-function eye_choice () {
+function eye_choice (w, test) {
         //initialization
-        if (!lib)
+        
         var l_eye_1 = app.project.item(91).layer("L_eye_open").transform;
         var l_eye_2 = app.project.item(91).layer("L_eye_happy").transform;
         var l_eye_3 = app.project.item(91).layer("L_eye_closed").transform;
@@ -18,9 +18,9 @@ function eye_choice () {
         var l_arr = [l_eye_1, l_eye_2, l_eye_3];
         var r_arr = [r_eye_1, r_eye_2, r_eye_3];
     
-    
-    var w = new Window ('palette', "", undefined);
-    
+    if  (w == undefined) {
+        var w = new Window ('palette', "", undefined);
+    };
 
 
     var eye_g = w.add("panel", undefined, "Eye");

@@ -9,16 +9,20 @@ function main () {
 //~     var mode = true;
 //~     //testingslider().run();
     var w = new Window("palette", "Extension", undefined);
-//~     var tpanel = w.add('tabbedpanel');
-//~     tpanel.preferredSize = [350,300];
-//~     var general = tpanel.add('tab', undefined, "Test1");
-//~     general.add('statictext', undefined, "within Test1 Tab");
+
+    //Tabs
+    var tpanel = w.add('tabbedpanel');
+    tpanel.preferredSize = [350,300];
     
+    var eyes = tpanel.add('tab', undefined, "Eye Control");
+    var eyes2 = tpanel.add('tab', undefined, "Eye Lids");
+    var fingers = tpanel.add('tab', undefined, "Fingers");
+     
      //Modules
-    eye_choice(w, false);
-    LidWindow(w, false);
-    lid_slider(w, false);
-    finger_select(w, false);
+    eye_choice(eyes, false);
+    LidWindow(eyes2, false);
+    lid_slider(eyes2, false);
+    finger_select(fingers, false);
     
 
 	w.okBtn = w.add("button", undefined, "Close Window");

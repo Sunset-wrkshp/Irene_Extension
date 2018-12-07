@@ -31,12 +31,15 @@ else {
 if (w == undefined) {
     var w = new Window ('palette', "Eye Lid Sliders", undefined);
 };
-//w.orientation = 'row';
+//~ w.orientation = '';
+
 
 w.add('checkbox', undefined, 'Together', {name: 'both_sw'});
 
-var slider_group = w.add('Panel', undefined, 'L_lid');
-slider_group.orientation = 'row';
+w.add("group", undefined, {name:'win_group'});
+
+var slider_group = w.win_group.add('Panel', undefined, 'L_lid');
+slider_group.orientation = 'column';
 
 var top_lid_group = slider_group.add('Panel', undefined, 'Top Lid');
 
@@ -64,8 +67,8 @@ bot_slider.minvalue = -32;
 bot_lid_group.add('button', undefined, 'Reset Silder', {name: 'Reset'});
 
 //Right Eye Lids
-var Rslider_group = w.add('Panel', undefined, 'R_lid');
-Rslider_group.orientation = 'row';
+var Rslider_group = w.win_group.add('Panel', undefined, 'R_lid');
+Rslider_group.orientation = 'column';
 
 var Rtop_lid_group = Rslider_group.add('Panel', undefined, 'Top Lid');
 

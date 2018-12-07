@@ -3,6 +3,7 @@
 #include 'Drop Down List Testing.jsx'
 #include 'Slider_testing.jsx'
 #include 'eye_choice.jsx'
+#include 'Finger_select.jsx'
 
 function main () {
 //~     var mode = true;
@@ -12,9 +13,12 @@ function main () {
 //~     tpanel.preferredSize = [350,300];
 //~     var general = tpanel.add('tab', undefined, "Test1");
 //~     general.add('statictext', undefined, "within Test1 Tab");
+    
+     //Modules
     eye_choice(w, false);
     LidWindow(w, false);
     lid_slider(w, false);
+    finger_select(w, false);
     
 
 	w.okBtn = w.add("button", undefined, "Close Window");

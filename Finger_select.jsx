@@ -1,8 +1,8 @@
 ﻿//Fingers
+lib = true;
+if(!lib) { finger_select();};
 
-Finger_select();
-
-function Finger_select() {
+function finger_select(w, test) {
     
     var fin_1 = app.project.item(5).layer("L_thumb").transform;
     var fin_1c = app.project.item(5).layer("L_thumb_closed").transform;
@@ -24,8 +24,9 @@ function Finger_select() {
     var rfin_4c =app.project.item(5).layer("R_finger_3_closed").transform;
     
     // Create a window of type palette.
-	var w = new Window("palette", "SnpCreateDialog",undefined);  // bounds = [left, top, right, bottom]
-
+    if(w == undefined) {
+        var w = new Window("palette", "SnpCreateDialog", undefined);  
+    }
 	// Add a frame for the contents.
 	var h_panel = w.add("panel", undefined, "Hands");
 	
@@ -140,7 +141,7 @@ function finger_sw (obj1, obj2) {
     
     }
 
-//~ if(!lib) {
+if(!lib) {
 var buttons = w.add('group');
 buttons.orientation = "row";
 buttons.add ('button', undefined, "OK", {name: 'ok'});
@@ -160,11 +161,8 @@ buttons.add('button', undefined, "Cancel", {name: 'cancel'});
 	};
     
     w.show();
-//~   }  
+  }  
 
-
-	// Display the window
-	w.show();
 		
 	return true;
 		

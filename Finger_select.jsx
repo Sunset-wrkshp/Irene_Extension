@@ -6,12 +6,12 @@ function Finger_select() {
     
     var fin_1 = app.project.item(5).layer("L_thumb").transform;
     var fin_1c = app.project.item(5).layer("L_thumb_closed").transform;
-    var fin_2 = app.project.item(5).layer("L_thumb_closed").transform;
-    var fin_2c =app.project.item(5).layer("L_thumb_closed").transform;
-    var fin_3 = app.project.item(5).layer("L_thumb_closed").transform;
-    var fin_3c =app.project.item(5).layer("L_thumb_closed").transform;
-    var fin_4 = app.project.item(5).layer("L_thumb_closed").transform;
-    var fin_4c =app.project.item(5).layer("L_thumb_closed").transform;
+    var fin_2 = app.project.item(5).layer("L_finger_1").transform;
+    var fin_2c =app.project.item(5).layer("L_finger_1_closed").transform;
+    var fin_3 = app.project.item(5).layer("L_finger_2").transform;
+    var fin_3c =app.project.item(5).layer("L_finger_2_closed").transform;
+    var fin_4 = app.project.item(5).layer("L_finger_3").transform;
+    var fin_4c =app.project.item(5).layer("L_finger_3_closed").transform;
 	
     
     // Create a window of type palette.
@@ -40,19 +40,12 @@ function Finger_select() {
 		//win.close();
         };
     
-    //closing fingers
-	l_hand.fin_2.onClick = function() {
+    	l_hand.fin_2.onClick = function() {
          if (l_hand.fin_2.value == true) {
-            $.writeln("Box checked");
-            $.writeln(fin_2.value);
-            fin_2c.setValue(100);
-            fin_2.setValue(0);
+            finger_sw (fin_2c, fin_2);
         };
         else {
-                $.writeln("Box unchecked");
-                $.writeln(fin_2.value);
-                fin_2c.setValue(0);
-                fin_2.setValue(100);
+                finger_sw (fin_2, fin_2c);
             }
 		//win.close();
         };
@@ -60,35 +53,25 @@ function Finger_select() {
     
     	l_hand.fin_3.onClick = function() {
          if (l_hand.fin_3.value == true) {
-            $.writeln("Box checked");
-            $.writeln(fin_3.value);
-            fin_3c.setValue(100);
-            fin_3.setValue(0);
+            finger_sw (fin_3c, fin_3);
         };
         else {
-                $.writeln("Box unchecked");
-                $.writeln(fin_3.value);
-                fin_3c.setValue(0);
-                fin_3.setValue(100);
+                finger_sw (fin_3, fin_3c);
             }
 		//win.close();
         };
-
-	l_hand.fin_4.onClick = function() {
+    
+    
+    	l_hand.fin_4.onClick = function() {
          if (l_hand.fin_4.value == true) {
-            $.writeln("Box checked");
-            $.writeln(fin_4.value);
-            fin_4c.setValue(100);
-            fin_4.setValue(0);
+            finger_sw (fin_4c, fin_4);
         };
         else {
-                $.writeln("Box unchecked");
-                $.writeln(fin_4.value);
-                fin_4c.setValue(0);
-                fin_4.setValue(100);
+                finger_sw (fin_4, fin_4c);
             }
 		//win.close();
         };
+  
     
 
 function finger_sw (obj1, obj2) {

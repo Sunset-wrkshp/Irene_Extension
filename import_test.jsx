@@ -12,8 +12,8 @@ function main () {
 //~     var general = tpanel.add('tab', undefined, "Test1");
 //~     general.add('statictext', undefined, "within Test1 Tab");
     
-    LidWindow(w, true);
-    lid_slider(w, true);
+    LidWindow(w, false);
+    lid_slider(w, false);
 
 	w.okBtn = w.add("button", undefined, "Close Window");
 //~ 	win.btnPanel.cancelBtn = win.btnPanel.add("button", [120, 65, 210, 85], "Cancel");

@@ -22,10 +22,10 @@ if (test) {
     var Rl_lid_obj = app.project.item(4).layer("Solid 13").transform;
     };
 else {
-    var t_lid_obj = undefined;
-    var l_lid_obj = undefined;
-    var Rt_lid_obj = app.project.item(4).layer("Solid 2").transform;
-    var Rl_lid_obj = app.project.item(4).layer("Solid 1").transform;
+    var t_lid_obj = app.project.item(91).layer("L_Tlid_forslash").transform;
+    var l_lid_obj = app.project.item(91).layer("L_Blid_forslash").transform;
+    var Rt_lid_obj = app.project.item(93).layer("R_Tlid_forslash").transform;
+    var Rl_lid_obj = app.project.item(93).layer("R_Blid_forslash").transform;
     };
 
 if (w == undefined) {

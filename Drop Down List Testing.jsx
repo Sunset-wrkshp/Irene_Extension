@@ -60,7 +60,10 @@
 //~ var r_t_lid_arr = [lid_8, lid_9, lid_10, lid_11];
 //~ var r_b_lid_arr = [lid_12, lid_13, lid_14, lid_15];
 
-
+lib = true;
+if(!lib) {
+    LidWindow(undefined, true);
+}
 
 
 function LidWindow(w,test) 
@@ -221,16 +224,18 @@ function lid_change(arr, ind) {
     };
 
 //Buttons that probably should be removed when used as a library.
-var buttons = w.add('group');
-buttons.add ('button', undefined, "OK", {name: 'ok'});
-//~ w.show ();
-		
-     buttons.children['ok'].onClick = function()
-    {
-		//$.writeln("Cancel pressed");
-		w.close();
-	};
+if(!lib) {
+    var buttons = w.add('group');
+    buttons.add ('button', undefined, "OK", {name: 'ok'});
+    //~ w.show ();
+            
+         buttons.children['ok'].onClick = function()
+        {
+            //$.writeln("Cancel pressed");
+            w.close();
+        };
 
+};
 	return "red";    
     
     

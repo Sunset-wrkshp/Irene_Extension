@@ -96,12 +96,12 @@ Rbot_slider.minvalue = -32;
 Rbot_lid_group.add('button', undefined, 'Reset Silder', {name: 'Reset'});
 
 
-
+if(!lib) {
 var buttons = w.add('group');
 buttons.orientation = "row";
 buttons.add ('button', undefined, "OK", {name: 'ok'});
 buttons.add('button', undefined, "Cancel", {name: 'cancel'});
-
+};
 
 
 
@@ -254,6 +254,7 @@ Rbot_lid_group.Reset.onClick = function() {
     };
 
 //OK CANCEL buttons
+if (!lib) {
     //children names from the parent group.
     buttons.children['ok'].onClick = function()
     {
@@ -264,6 +265,7 @@ Rbot_lid_group.Reset.onClick = function() {
 		//$.writeln("Cancel pressed");
 		w.close();
 	};
+};
 
  //checkbox opacity function
 function opacity_bx(obj, ch_bx) {

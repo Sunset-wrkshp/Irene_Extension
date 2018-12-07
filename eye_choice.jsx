@@ -1,8 +1,12 @@
 ﻿//@target aftereffects
 //Eye choice
 
+lib = false;
+if (!lib){ eye_choice();};
+
 function eye_choice () {
         //initialization
+        if (!lib)
         var l_eye_1 = app.project.item(91).layer("L_eye_open").transform;
         var l_eye_2 = app.project.item(91).layer("L_eye_happy").transform;
         var l_eye_3 = app.project.item(91).layer("L_eye_closed").transform;
@@ -17,9 +21,17 @@ function eye_choice () {
     
     var w = new Window ('palette', "", undefined);
     
-    var eye = w.add("panel", undefined, "Eye");
-    eye.orientation = "row";
+
+
+    var eye_g = w.add("panel", undefined, "Eye");
+    eye_g.orientation = "column";
+  
+//~     eye.add("group", undefined);
+    eye_g.add('checkbox', undefined, "Together", {name: "both_sw"});  
     
+    var eye = eye_g.add("group", undefined);
+    eye.orientation = "row";
+
     eye.add("group", undefined, {name: "l_grp"});
     eye.l_grp.orientation = "column";
     eye.l_grp.add('statictext', undefined, "Left Eye");
@@ -31,21 +43,29 @@ function eye_choice () {
     eye.r_grp.add('statictext', undefined, "Right Eye");
     var r_eye = eye.r_grp.add('dropdownlist', undefined, ["0", "^", "v"]);
     
-    
+
+//together checkbox
+eye_g.both_sw.onClick = function() {
+     if (this.value == true) {
+        eye.r_grp.enabled = false;
+        };
+    else {
+        eye.r_grp.enabled = true;
+        };
+    };
+
+
 // drop list functions
 l_eye.onChange = function() {
     lid_change(l_arr, this.selection.index)
-//~     if (lid_panel.both_sw.value) {
-//~          lid_change(r_t_lid_arr, this.selection.index);   
-//~         };
+    if (eye_g.both_sw.value) {
+         lid_change(r_arr, this.selection.index);   
+        };
     };
 
 r_eye.onChange = function() {
 
-    lid_change(r_arr, this.selection.index)
-//~         if (lid_panel.both_sw.value) {
-//~          lid_change(r_b_lid_arr, this.selection.index);   
-//~         };
+    lid_change(r_arr, this.selection.index);
     };
 
 /*
@@ -81,14 +101,14 @@ function lid_change(arr, ind) {
     
     
     
-//~ if(!lib) {
+if(!lib) {
 var buttons = w.add('group');
 buttons.orientation = "row";
 buttons.add ('button', undefined, "OK", {name: 'ok'});
 buttons.add('button', undefined, "Cancel", {name: 'cancel'});
 //~ };    
     
-//~ if (!lib) {
+
     //children names from the parent group.
     buttons.children['ok'].onClick = function()
     {
@@ -101,7 +121,7 @@ buttons.add('button', undefined, "Cancel", {name: 'cancel'});
 	};
     
     w.show();
-    
+  }  
     
     
     
@@ -114,4 +134,3 @@ buttons.add('button', undefined, "Cancel", {name: 'cancel'});
     }
 
 
-eye_choice();

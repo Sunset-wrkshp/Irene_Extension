@@ -16,13 +16,15 @@ function main () {
     
     var eyes = tpanel.add('tab', undefined, "Eye Control");
     var eyes2 = tpanel.add('tab', undefined, "Eye Lids");
-    var fingers = tpanel.add('tab', undefined, "Fingers");
+    var fingers = tpanel.add('tab', undefined, "Mouth & Fingers");
      
      //Modules
     eye_choice(eyes, false);
     LidWindow(eyes2, false);
     lid_slider(eyes2, false);
+    mouths(fingers, false);    
     finger_select(fingers, false);
+    
     
 
 	w.okBtn = w.add("button", undefined, "Close Window");

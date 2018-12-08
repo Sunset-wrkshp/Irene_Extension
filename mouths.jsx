@@ -1,9 +1,11 @@
 ﻿//Mouths
 
-mouths();
+lib = true;
+
+if(!lib){ mouths(undefined, undefined); };
 
 
-function mouths() {
+function mouths(w, test) {
         //initialization
          var mouth1 = app.project.item(92).layer("Smile_open").transform;
          var mouth2 = app.project.item(92).layer("Closed Mouth").transform;
@@ -13,11 +15,11 @@ function mouths() {
          var mouth6 = app.project.item(92).layer("Smile_th").transform;
          var mouth7 = app.project.item(92).layer("Smile_v").transform;
 
-        var arr = [mouth1, mouth2,mouth3,mouth4,mouth5,mouth6,mouth7,];
+        var arr = [mouth1, mouth2,mouth3,mouth4,mouth5,mouth6,mouth7];
     
-//~     if  (w == undefined) {
-        var w = new Window ('palette', "", undefined);
-//~     };
+        if  (w == undefined) {
+            var w = new Window ('palette', "", undefined);
+        };
 
         var panel = w.add('panel', undefined, "Mouths");
         
@@ -50,7 +52,7 @@ function mouths() {
     
     
     
-//~ if(!lib) {
+if(!lib) {
 var buttons = w.add('group');
 buttons.orientation = "row";
 buttons.add ('button', undefined, "OK", {name: 'ok'});
@@ -70,7 +72,7 @@ buttons.add('button', undefined, "Cancel", {name: 'cancel'});
 	};
     
     w.show();
-//~   }  
+  }  
     
     
     

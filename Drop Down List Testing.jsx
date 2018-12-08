@@ -209,7 +209,7 @@ r_b_lid.onChange = function() {
 function lid_change(arr, ind) {
     // for loop through array, turn each object opacity to zero
     //turn the desired opacity to one
-    $.writeln("Function Called " + ind);
+//~     $.writeln("Function Called " + ind);
     for (i = 1; i <= arr.length; i++) {
              if (i != ind) {
                 arr[i-1].opacity.setValueAtTime(app.project.activeItem.time, 0);

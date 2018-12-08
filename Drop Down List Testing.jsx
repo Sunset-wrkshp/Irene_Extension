@@ -141,7 +141,7 @@ var r_b_lid_arr = [lid_12, lid_13];
 //Panel starts
 var lid_panel = w.add('panel', undefined, 'Eye Lid Control');
 lid_panel.orientation = 'column';
-lid_panel.add('checkbox', undefined, "Together", {name: "both_sw"});
+//~ lid_panel.add('checkbox', undefined, "Together", {name: "both_sw"});
 
 var lid_group = lid_panel.add("group", undefined);
 lid_group.orientation = "row";
@@ -162,15 +162,15 @@ var r_lid = lid_group.add('panel', undefined, "Right Eye");
 var r_t_lid = r_lid.add('dropdownlist', undefined, ["None",'\\', '\/', 'flat']);
 var r_b_lid = r_lid.add('dropdownlist', undefined, ["None",'\\', '\/']);
 
-//together checkbox
-lid_panel.both_sw.onClick = function() {
-     if (this.value == true) {
-        r_lid.enabled = false;
-        };
-    else {
-        r_lid.enabled = true;
-        };
-    };
+//~ //together checkbox
+//~ lid_panel.both_sw.onClick = function() {
+//~      if (this.value == true) {
+//~         r_lid.enabled = false;
+//~         };
+//~     else {
+//~         r_lid.enabled = true;
+//~         };
+//~     };
 
 
 // drop list functions

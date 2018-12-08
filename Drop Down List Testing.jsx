@@ -176,17 +176,17 @@ var r_b_lid = r_lid.add('dropdownlist', undefined, ["None",'\\', '\/']);
 // drop list functions
 l_t_lid.onChange = function() {
     lid_change(l_t_lid_arr, this.selection.index)
-    if (lid_panel.both_sw.value) {
-         lid_change(r_t_lid_arr, this.selection.index);   
-        };
+//~     if (lid_panel.both_sw.value) {
+//~          lid_change(r_t_lid_arr, this.selection.index);   
+//~         };
     };
 
 l_b_lid.onChange = function() {
 
     lid_change(l_b_lid_arr, this.selection.index)
-        if (lid_panel.both_sw.value) {
-         lid_change(r_b_lid_arr, this.selection.index);   
-        };
+//~         if (lid_panel.both_sw.value) {
+//~          lid_change(r_b_lid_arr, this.selection.index);   
+//~         };
     };
 
 r_t_lid.onChange = function() {

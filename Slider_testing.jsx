@@ -45,7 +45,7 @@ var top_lid_group = slider_group.add('Panel', undefined, 'Top Lid');
 
 top_lid_group.add('group', undefined, {name: 'box_group'});
 top_lid_group.box_group.orientation = 'row';
-top_lid_group.box_group.add('checkbox',undefined,'Visible', {name:'vis_b'});
+//~ top_lid_group.box_group.add('checkbox',undefined,'Visible', {name:'vis_b'});
 //top_lid_group.box_group.add('edittext', undefined, '0', {name: 'top_v'});
 top_lid_group.box_group.add('edittext', undefined, '0', {name: 'lid_v'});
 top_lid_group.box_group.lid_v.preferredSize = [25,20];
@@ -57,7 +57,7 @@ top_lid_group.add('button', undefined, 'Reset Silder', {name: 'Reset'});
 var bot_lid_group = slider_group.add('Panel', undefined, 'Bottom Lid');
 
 bot_lid_group.add('group', undefined, {name: 'box_group'});
-bot_lid_group.box_group.add('checkbox',undefined,'Visible', {name:'vis_b'});
+//~ bot_lid_group.box_group.add('checkbox',undefined,'Visible', {name:'vis_b'});
 //bot_lid_group.box_group.add('edittext', undefined, '0', {name: 'bot_v'});
 bot_lid_group.box_group.add('edittext', undefined, '0', {name: 'lid_v'});
 bot_lid_group.box_group.lid_v.preferredSize = [25,20];
@@ -74,7 +74,7 @@ var Rtop_lid_group = Rslider_group.add('Panel', undefined, 'Top Lid');
 
 Rtop_lid_group.add('group', undefined, {name: 'box_group'});
 Rtop_lid_group.box_group.orientation = 'row';
-Rtop_lid_group.box_group.add('checkbox',undefined,'Visible', {name:'vis_b'});
+//~ Rtop_lid_group.box_group.add('checkbox',undefined,'Visible', {name:'vis_b'});
 //top_lid_group.box_group.add('edittext', undefined, '0', {name: 'top_v'});
 Rtop_lid_group.box_group.add('edittext', undefined, '0', {name: 'lid_v'});
 Rtop_lid_group.box_group.lid_v.preferredSize = [25,20];
@@ -86,7 +86,7 @@ Rtop_lid_group.add('button', undefined, 'Reset Silder', {name: 'Reset'});
 var Rbot_lid_group = Rslider_group.add('Panel', undefined, 'Bottom Lid');
 
 Rbot_lid_group.add('group', undefined, {name: 'box_group'});
-Rbot_lid_group.box_group.add('checkbox',undefined,'Visible', {name:'vis_b'});
+//~ Rbot_lid_group.box_group.add('checkbox',undefined,'Visible', {name:'vis_b'});
 //bot_lid_group.box_group.add('edittext', undefined, '0', {name: 'bot_v'});
 Rbot_lid_group.box_group.add('edittext', undefined, '0', {name: 'lid_v'});
 Rbot_lid_group.box_group.lid_v.preferredSize = [25,20];
@@ -135,32 +135,32 @@ else {
      
  
 
-//Visibility Checkboxes
-top_lid_group.box_group.vis_b.onClick = function() {
-    opacity_bx (t_lid_obj, this);
-    if (w.both_sw.value){
-        opacity_bx (Rt_lid_obj, this);
-        }
-    };
+//~ //Visibility Checkboxes
+//~ top_lid_group.box_group.vis_b.onClick = function() {
+//~     opacity_bx (t_lid_obj, this);
+//~     if (w.both_sw.value){
+//~         opacity_bx (Rt_lid_obj, this);
+//~         }
+//~     };
 
-bot_lid_group.box_group.vis_b.onClick = function() {
-     opacity_bx (l_lid_obj, this);
-     if (w.both_sw.value){
-        opacity_bx (Rl_lid_obj, this);
-        }
+//~ bot_lid_group.box_group.vis_b.onClick = function() {
+//~      opacity_bx (l_lid_obj, this);
+//~      if (w.both_sw.value){
+//~         opacity_bx (Rl_lid_obj, this);
+//~         }
 
-    };
+//~     };
 
 
-Rtop_lid_group.box_group.vis_b.onClick = function() {
-    opacity_bx (Rt_lid_obj, this);
-    };
+//~ Rtop_lid_group.box_group.vis_b.onClick = function() {
+//~     opacity_bx (Rt_lid_obj, this);
+//~     };
 
-Rbot_lid_group.box_group.vis_b.onClick = function() {
-     opacity_bx (Rl_lid_obj, this);
+//~ Rbot_lid_group.box_group.vis_b.onClick = function() {
+//~      opacity_bx (Rl_lid_obj, this);
 
-    };
- 
+//~     };
+//~  
  
  //Sliders
 top_slider.onChange = function() {

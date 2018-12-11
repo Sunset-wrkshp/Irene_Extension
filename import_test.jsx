@@ -4,6 +4,7 @@
 #include 'Slider_testing.jsx'
 #include 'eye_choice.jsx'
 #include 'Finger_select.jsx'
+#include 'mouths.jsx'
 
 function main () {
 //~     var mode = true;

@@ -1,7 +1,7 @@
 ﻿//@target aftereffects
 //Mouths
 
-lib = false;
+lib = true;
 
 if(!lib){ mouths(undefined, undefined); };
 
@@ -17,6 +17,9 @@ function mouths(w, test) {
          var mouth7 = app.project.item(92).layer("Smile_v").transform;
 
         var arr = [mouth1, mouth2,mouth3,mouth4,mouth5,mouth6,mouth7];
+        
+        //mouth composition
+        var m_comp = app.project.item(2).layer("Mouth").transform; 
     
         // window creation
         if  (w == undefined) {
@@ -33,23 +36,18 @@ function mouths(w, test) {
         var scalegp = panel.add('group {orientation: "row"}');
 //~         scalegp.orientation = 'row';
         
-        //Scrollbar
-//~         var scroll = scalegp.add('scrollbar', undefined, 0);
-//~         scroll.preferredSize = [20, 100];
-//~         scroll.stepdelta = 1;
-//~         scroll.jumpdelta = 1;
+          //Y Scrollbar
           var y_scroll = scalegp.add('scrollbar {preferredSize: [20,100], jumpdelta: 5, helpTip: "this",minvalue: -100, maxvalue: 0, value: -100}');
           var r_gp = scalegp.add('group {orientation: "column"}');
-//~           r_gp.orientation = "column";
+          //textboxes
+          r_gp.add('checkbox', undefined, 'Together', {name: 'together'});
+          r_gp.add('group', undefined);
+          var x_val = r_gp.children[1].add('edittext {text: "-", characters: 3}');
+          var y_val = r_gp.children[1].add('edittext {text: "-", characters: 3}');
           
-          var x_val = r_gp.add('edittext {text: "-", characters: 3}');
-          var y_val = r_gp.add('edittext {text: "-", characters: 3}');
-//~           r_gp.add('statictext', undefined, "Text here");
+          
+          //X scrollbar
           var x_scroll = r_gp.add('scrollbar {preferredSize: [100,20], jumpdelta: 5, helpTip: "this", value: 100}');
-
-        
-        
-
 
 
         // Drop Down List function
@@ -60,7 +58,7 @@ function mouths(w, test) {
         function lid_change(arr, ind) {
         // for loop through array, turn each object opacity to zero
         //turn the desired opacity to one
-        $.writeln("Function Called " + ind);
+//~         $.writeln("Function Called " + ind);
         for (i = 1; i <= arr.length; i++) {
                  if (i != ind) {
                     arr[i-1].opacity.setValueAtTime(app.project.activeItem.time, 0);
@@ -74,9 +72,37 @@ function mouths(w, test) {
             };    
         };
     
+        x_scroll.onChanging = function () {
+            scale();
+            };
+        
+        y_scroll.onChanging = function () {
+            scale();
+            };
+        
+        r_gp.together.onClick = function () {
+            if (this.value) {
+                x_scroll.enabled = false;
+                x_val.enabled = false;
+                }
+            else {
+                x_scroll.enabled = true;
+                x_val.enabled = true;
+                };
+            };
+
+//mouth scaling function
+function scale() {
+    y_val.text = y_scroll.value.toFixed(0) *-1;
     
-    
-    
+    if (r_gp.together.value) {
+        x_val.text = y_scroll.value.toFixed(0) *-1;
+        m_comp.scale.setValueAtTime(app.project.activeItem.time, [y_scroll.value*-1, y_scroll.value*-1 , 0]);
+    } else {
+        x_val.text = x_scroll.value.toFixed(0);
+        m_comp.scale.setValueAtTime(app.project.activeItem.time, [x_scroll.value, y_scroll.value*-1 , 0]);
+        }
+};
     
     
     

@@ -8,13 +8,13 @@ if(!lib){ mouths(undefined, undefined); };
 
 function mouths(w, test) {
         //initialization
-         var mouth1 = app.project.item(92).layer("Smile_open").transform;
-         var mouth2 = app.project.item(92).layer("Closed Mouth").transform;
-         var mouth3 = app.project.item(92).layer("Smile_teeth").transform;
-         var mouth4 = app.project.item(92).layer("O_W").transform;
-         var mouth5 = app.project.item(92).layer("Smile_L").transform;
-         var mouth6 = app.project.item(92).layer("Smile_th").transform;
-         var mouth7 = app.project.item(92).layer("Smile_v").transform;
+         var mouth1 = app.project.item(92).layer("Smile_open Outlines").transform;
+         var mouth2 = app.project.item(92).layer("Closed Mouth Outlines").transform;
+         var mouth3 = app.project.item(92).layer("Smile_teeth Outlines").transform;
+         var mouth4 = app.project.item(92).layer("O_W Outlines").transform;
+         var mouth5 = app.project.item(92).layer("Smile_L Outlines").transform;
+         var mouth6 = app.project.item(92).layer("Smile_th Outlines").transform;
+         var mouth7 = app.project.item(92).layer("Smile_v Outlines").transform;
 
         var arr = [mouth1, mouth2,mouth3,mouth4,mouth5,mouth6,mouth7];
         

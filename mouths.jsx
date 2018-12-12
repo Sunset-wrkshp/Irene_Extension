@@ -33,8 +33,8 @@ function mouths(w, test) {
         var dlist = panel.add('dropdownlist', undefined, ["None","Open smile", "Closed", "Teeth \"E\"", 'Open "O"', '"L"','"TH"', '"V"']);
 
     
-        var scalegp = panel.add('group {orientation: "row"}');
-//~         scalegp.orientation = 'row';
+        var scalegp = panel.add('panel', undefined, "Scale");
+        scalegp.orientation = 'row';
         
           //Y Scrollbar
           var y_scroll = scalegp.add('scrollbar {preferredSize: [20,100], jumpdelta: 5, helpTip: "this",minvalue: -100, maxvalue: 0, value: -100}');

@@ -11,32 +11,60 @@ function ear_control () {
 //~     };
     
     var panel = w.add('panel', undefined, "Ear Control");
-    panel.add('group', undefined);
-    panel.children[0].orientation = "row";
-    var left_s = panel.children[0].add('scrollbar {preferredSize: [100,20], jumpdelta: 5, helpTip: "this",minvalue: -360, maxvalue: 360, value: 0}');
-    var right_s = panel.children[0].add('scrollbar {preferredSize: [100,20], jumpdelta: 5, helpTip: "this",minvalue: -360, maxvalue: 360, value: 0}');
+    panel.add("group", undefined, {name: "top_gp"});
+    panel.top_gp.orientation = "row";
+    var l_box = panel.top_gp.add('edittext{text: "-", characters: 3}');
+    var l_reset = panel.top_gp.add('button', undefined, '(R)');
+    panel.top_gp.add('checkbox', undefined, 'Link', {name: 'link'});
+    var r_reset = panel.top_gp.add('button', undefined, '(R)');
+    var r_box = panel.top_gp.add('edittext{text: "-", characters: 3}');
+    
+    panel.add('group', undefined, {name: 'bot_gp'});
+    panel.bot_gp.orientation = "row";
+    var left_s = panel.bot_gp.add('scrollbar {preferredSize: [100,20], jumpdelta: 1, helpTip: "this",minvalue: -180, maxvalue: 180, value: 0}');
+    var right_s = panel.bot_gp.add('scrollbar {preferredSize: [100,20], jumpdelta: 1, helpTip: "this",minvalue: -180, maxvalue: 180, value: 0}');
     
     
     left_s.onChanging = function () {
-        rotate();
+        rotate(left_s, l_ear);
+        l_box.text = this.value.toFixed(0);
     };
 
     right_s.onChanging = function () {
-        rotate();
+        rotate(right_s, r_ear);
+        r_box.text = this.value.toFixed(0);
+        
     };
     
+    l_box.onChange = function () {
+        left_s.value = this.text.toFixed(0);
+        rotate(left_s, l_ear);
+        }
     
-    //mouth scaling function
-    function rotate() {
-        y_val.text = y_scroll.value.toFixed(0) *-1;
-        
-        if (r_gp.together.value) {
-            x_val.text = y_scroll.value.toFixed(0) *-1;
-            m_comp.scale.setValueAtTime(app.project.activeItem.time, [y_scroll.value*-1, y_scroll.value*-1 , 0]);
-        } else {
-            x_val.text = x_scroll.value.toFixed(0);
-            m_comp.scale.setValueAtTime(app.project.activeItem.time, [x_scroll.value, y_scroll.value*-1 , 0]);
-            }
+    r_box.onChange = function () {
+        right_s.value = this.text.toFixed(0);
+        rotate(right_s, r_ear);
+        }
+    
+    //reset buttons
+    l_reset.onClick = function () {
+        if(this.value){
+            left_s.value = 0;
+            rotate(left_s, l_ear);
+            l_box.text = left_s.value.toFixed(0);
+            } 
+        }
+    
+    r_reset.onClick = function () {
+        if(this.value){
+            right_s.value = 0;
+            rotate(right_s, r_ear);
+            r_box.text = right_s.value.toFixed(0);
+            } 
+        }    
+    //ear rotating
+    function rotate(slider, ear) {
+        ear.rotation.setValueAtTime(app.project.activeItem.time, slider.value.toFixed(0));
     };
     
 //~     if(!lib) {

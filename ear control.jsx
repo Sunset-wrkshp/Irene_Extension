@@ -1,14 +1,16 @@
 ﻿//@target aftereffects
 
-ear_control();
+lib = true;
 
-function ear_control () {
+if(!lib){ ear_control(undefined);}
+
+function ear_control (w) {
     var l_ear = app.project.item(2).layer("L_ear").transform;
     var r_ear = app.project.item(2).layer("R_ear").transform;
 
-//~     if  (w == undefined) {
+    if  (w == undefined) {
         var w = new Window ('palette', "", undefined);
-//~     };
+    };
     
     var panel = w.add('panel', undefined, "Ear Control");
     panel.add("group", undefined, {name: "top_gp"});
@@ -89,7 +91,7 @@ function ear_control () {
         ear.rotation.setValueAtTime(app.project.activeItem.time, slider.value.toFixed(0));
     };
     
-//~     if(!lib) {
+    if(!lib) {
     var buttons = w.add('group');
     buttons.orientation = "row";
     buttons.add ('button', undefined, "OK", {name: 'ok'});
@@ -104,7 +106,7 @@ function ear_control () {
 	};
     
     w.show();
-//~   }  
+  }  
     
     
     return true;

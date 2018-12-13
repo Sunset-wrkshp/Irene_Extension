@@ -1,10 +1,9 @@
-﻿//~ import * as myModule from 'Slider_testing.jsx';
-//#include 'Slider_testing.jsx';
-#include 'Drop Down List Testing.jsx'
+﻿#include 'Drop Down List Testing.jsx'
 #include 'Slider_testing.jsx'
 #include 'eye_choice.jsx'
 #include 'Finger_select.jsx'
 #include 'mouths.jsx'
+#include 'ear control.jsx'
 
 function main () {
 //~     var mode = true;
@@ -15,7 +14,7 @@ function main () {
     var tpanel = w.add('tabbedpanel');
     tpanel.preferredSize = [350,300];
     
-    var eyes = tpanel.add('tab', undefined, "Eye Control");
+    var eyes = tpanel.add('tab', undefined, "Eye / Ear");
     var eyes2 = tpanel.add('tab', undefined, "Eye Lids");
     var fingers = tpanel.add('tab', undefined, "Mouth & Fingers");
      
@@ -25,7 +24,7 @@ function main () {
     lid_slider(eyes2, false);
     mouths(fingers, false);    
     finger_select(fingers, false);
-    
+    ear_control(eyes);
     
 
 	w.okBtn = w.add("button", undefined, "Close Window");

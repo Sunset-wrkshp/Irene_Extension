@@ -14,12 +14,12 @@ function ear_control () {
     panel.add("group", undefined, {name: "top_gp"});
     panel.top_gp.orientation = "row";
     var l_box = panel.top_gp.add('edittext{text: "-", characters: 3}');
-    var l_reset = panel.top_gp.add('button', undefined, '(R)');
+    var l_reset = panel.top_gp.add('button {text: "(R)", preferredSize: [25,25]}');
     panel.top_gp.add('checkbox', undefined, 'Link', {name: 'link'});
-    var r_reset = panel.top_gp.add('button', undefined, '(R)');
+    var r_reset = panel.top_gp.add('button {text: "(R)", preferredSize: [25,25]}');
     var r_box = panel.top_gp.add('edittext{text: "-", characters: 3}');
     
-    panel.add('group', undefined, {name: 'bot_gp'});
+    var together = panel.add('group', undefined, {name: 'bot_gp'});
     panel.bot_gp.orientation = "row";
     var left_s = panel.bot_gp.add('scrollbar {preferredSize: [100,20], jumpdelta: 1, helpTip: "this",minvalue: -180, maxvalue: 180, value: 0}');
     var right_s = panel.bot_gp.add('scrollbar {preferredSize: [100,20], jumpdelta: 1, helpTip: "this",minvalue: -180, maxvalue: 180, value: 0}');
@@ -37,31 +37,64 @@ function ear_control () {
     };
     
     l_box.onChange = function () {
-        left_s.value = this.text.toFixed(0);
+        left_s.value = this.text;
         rotate(left_s, l_ear);
         }
     
     r_box.onChange = function () {
-        right_s.value = this.text.toFixed(0);
+        right_s.value = this.text;
         rotate(right_s, r_ear);
         }
     
     //reset buttons
     l_reset.onClick = function () {
-        if(this.value){
             left_s.value = 0;
             rotate(left_s, l_ear);
             l_box.text = left_s.value.toFixed(0);
-            } 
         }
     
     r_reset.onClick = function () {
-        if(this.value){
             right_s.value = 0;
             rotate(right_s, r_ear);
             r_box.text = right_s.value.toFixed(0);
-            } 
         }    
+    
+    //together box
+    panel.bot_gp.onClick = function () {
+        //disable the right side.
+        $.writeln("clicked");
+        if(this.value == true){
+            r_reset.enabled = false;
+            r_box.enabled = false;
+            right_s.enabled = false;
+            
+            }
+        else {
+            r_reset.enabled = true;
+            r_box.enabled = true;
+            right_s.enabled = true;          
+            
+            }
+        
+        };
+    
+    together.onClick = function () {
+                $.writeln("clicked");
+
+        
+        }
+    
+        r_gp.together.onClick = function () {
+            if (this.value) {
+                x_scroll.enabled = false;
+                x_val.enabled = false;
+                }
+            else {
+                x_scroll.enabled = true;
+                x_val.enabled = true;
+                };
+            };
+    
     //ear rotating
     function rotate(slider, ear) {
         ear.rotation.setValueAtTime(app.project.activeItem.time, slider.value.toFixed(0));

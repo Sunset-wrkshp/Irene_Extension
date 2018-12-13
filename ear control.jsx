@@ -59,41 +59,30 @@ function ear_control () {
             r_box.text = right_s.value.toFixed(0);
         }    
     
-    //together box
-    panel.bot_gp.onClick = function () {
-        //disable the right side.
-        $.writeln("clicked");
-        if(this.value == true){
-            r_reset.enabled = false;
-            r_box.enabled = false;
-            right_s.enabled = false;
-            
-            }
-        else {
-            r_reset.enabled = true;
-            r_box.enabled = true;
-            right_s.enabled = true;          
-            
-            }
-        
-        };
-    
-    together.onClick = function () {
-                $.writeln("clicked");
+//~     //together box
+//~     panel.bot_gp.onClick = function () {
+//~         //disable the right side.
+//~         $.writeln("clicked");
+//~         if(this.value == true){
+//~             r_reset.enabled = false;
+//~             r_box.enabled = false;
+//~             right_s.enabled = false;
+//~             
+//~             }
+//~         else {
+//~             r_reset.enabled = true;
+//~             r_box.enabled = true;
+//~             right_s.enabled = true;          
+//~             
+//~             }
+//~         
+//~         };
+//~     
+//~     together.onClick = function () {
+//~                 $.writeln("clicked");
 
-        
-        }
-    
-        r_gp.together.onClick = function () {
-            if (this.value) {
-                x_scroll.enabled = false;
-                x_val.enabled = false;
-                }
-            else {
-                x_scroll.enabled = true;
-                x_val.enabled = true;
-                };
-            };
+//~         
+//~         };
     
     //ear rotating
     function rotate(slider, ear) {
